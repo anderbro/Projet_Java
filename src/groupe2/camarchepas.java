@@ -1,8 +1,8 @@
 package groupe2;
 
-public class awaw {
+public class camarchepas {
 
-	public awaw() {
+	public camarchepas() {
 		// TODO Auto-generated constructor stub
 	}
 
