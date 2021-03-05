@@ -5,4 +5,5 @@ public class test {
   String mot = "LePushFonctionne";
   String mot1 = "Dis bonjour";
   String mot2 = "Dis aurevoir";
+  String encore = "encore";
 }
