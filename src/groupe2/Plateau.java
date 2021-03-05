@@ -7,9 +7,9 @@ public class Plateau {
 	private char [][] plateau;
 	
 	//construction du plateau
-	public Plateau(int n, int p) {
-		horizontale = n;
-		verticale = p;
+	public Plateau(int a, int b) {
+		horizontale = a;
+		verticale = b;
 		plateau = new char [horizontale][verticale];
 		
 		for(int i = 0; i<horizontale; i++) {
