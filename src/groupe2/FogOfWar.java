@@ -5,5 +5,5 @@ public class FogOfWar {
 	
 	
 	
-	String esjuelkhe = " klezjkfesfdfds";
+	String esjuelkhe = " klezjkfesfdfesfkjgebkfhjseds";
 }
