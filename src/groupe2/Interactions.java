@@ -11,18 +11,18 @@ public class Interactions extends Joueur{
 
 
 	public void RandomPosition (int a, int b) { //void à changer
-		int x =(int)(Math.random() * a);
-		int y =(int)(Math.random() * b);
-		return;
-	}
+		int z =(int)(Math.random() * a);
+		int v =(int)(Math.random() * b);
+		}
 	
 	
 	
-	public void Potion(int z, int v, int positionJ,Joueur.getX(), int y) { //void à changer
+	public void Potion(int z, int v, int positionJ, Joueur j1) { //void à changer
 		if(positionJ == z & positionJ == v) {
-			// joueur récupère potion
-			;
-			RandomPosition(a,b);
+			if(j1.getHp() < j1.getHpMax()) {
+				j1.setHp(j1.getHp() + 1);
+			}
+			RandomPosition(z,v);
 		}
 		
 		
