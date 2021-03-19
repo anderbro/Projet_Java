@@ -15,7 +15,7 @@ public class FogOfWar extends Joueur1 {
 		
 		for(int i = 0; i<horizontale; i++) {
 			for(int j = 0; j<verticale; j++) {
-				plateau[i][j] = '?';
+				plateau[i][j] = '?';  // i = horizontal    j = vertical
 			}
 		}
 	}
@@ -86,7 +86,10 @@ public class FogOfWar extends Joueur1 {
 		
 		
 		
-		
+		// fonction remplacer fog of war avec la tuile adaptée
+		// Mise en place d'exceptions
+		// Réfléchir à comment rendre ça en serveur, 
+		// Génération automatique d'une carte ? 
 		
 	}
 		
