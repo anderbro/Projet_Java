@@ -17,7 +17,7 @@ public class main {
 		
 		
 		p1.deplacerB();
-		p1.deplacerD();
+		p1.deplacerG();
 		
 		//p1.deplacerB();
 		//p1.deplacerH();
