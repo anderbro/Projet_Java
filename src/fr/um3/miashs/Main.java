@@ -25,6 +25,9 @@ public class Main {
 			Plateau game = new Plateau ()  ;
 			game.remplissageGrille("C:\\Users\\Gorak\\git\\groupe2\\src\\fr\\um3\\miashs\\resources\\carte1.txt");
 			System.out.println(game);
+			
+			FogOfWar map = new FogOfWar(8, 5);
+			map.afficher();
 		}
 
 	}
