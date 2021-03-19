@@ -11,7 +11,7 @@ public class Main {
 
 		public static void main(String[] args) {
 			
-			Joueur player1 = new Joueur();
+			Joueur1 player1 = new Joueur1();
 			Scanner sc1 =  new Scanner(System.in);
 			 
 			
@@ -23,7 +23,7 @@ public class Main {
 			 
 			 
 			Plateau game = new Plateau ()  ;
-			game.remplissageGrille("C:\\Users\\BATOU\\eclipse-workspace\\Projet_dungeon_quest\\src\\fr\\um3\\miashs\\resources\\carte1.txt");
+			game.remplissageGrille("C:\\Users\\Gorak\\git\\groupe2\\src\\fr\\um3\\miashs\\resources\\carte1.txt");
 			System.out.println(game);
 		}
 

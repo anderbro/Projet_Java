@@ -68,7 +68,7 @@ public class Plateau {
 
 	
 	
-	public void entréeTouche(Joueur j1) {
+	public void entréeTouche(Joueur1 j1) {
 		System.out.println("quelle direction ? (haut/bas/gauche/droite");
 		Scanner txt = new Scanner(System.in);
 	
