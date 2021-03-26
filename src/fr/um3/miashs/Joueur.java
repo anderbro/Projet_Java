@@ -9,9 +9,10 @@ public class Joueur extends Plateau {
 	private int y;
 	private int hp=5;
 	private String nom;
+	private boolean outside =  false;
 	private Mouvement mouvement;
-	boolean isDead() { return this.hp <= 0; }
-	
+	public boolean isDead() { return this.hp <= 0; }
+	public boolean estDehors() {return this.outside;}
 	
 	public Joueur () {
 	
@@ -30,6 +31,7 @@ public class Joueur extends Plateau {
 	
 	
 	public int getX() {
+		
 		return x ;
 	}
 	
@@ -64,7 +66,11 @@ public class Joueur extends Plateau {
 		}
 	}
 	
-	
+
+	public void setOutside() {
+		this.outside= true;
+		
+	}
 	
 	public void piege() {
 		
@@ -73,42 +79,14 @@ public class Joueur extends Plateau {
 		}
 	}
 	
-	
-	
-	public void déplacementJoueur(Mouvement mouvement) {
-		
-		switch(mouvement) {
-		
-		//haut
-		case haut : 
-			this.x++;
-			break;
-		
-		//bas	
-		case bas:
-			this.x--;
-			break;
-		
-		//Gauche
-		case gauche:
-			this.y++;
-			break;
-		
-			//droite	
-		case droite:
-			this.y--;
-			break;
-			default:
-				System.out.println("entrez une direction valide");
-			
-			
+	public void conflit() {
+		if (hp>0) {
+			this.hp-=1;
 		}
-		
-		
-		
-		
 	}
 	
+	
+
 	public String getNom() {
 		return nom;
 	}
@@ -121,9 +99,9 @@ public class Joueur extends Plateau {
 	}
 	
 	
-	public String toString () {
+	/*public String toString () {
 		return getX()+" "+getY()+" "+getHp()+" "+getNom()+" "   ;
-	}
+	}*/
 	
 	
 }
