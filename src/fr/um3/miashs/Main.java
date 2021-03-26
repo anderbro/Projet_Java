@@ -16,12 +16,45 @@ public class Main {
 			
 			///tant que saisi des joueurs 
 			
-			 System.out.println("entrez votre nom");
-			 String nom = sc1.nextLine();
-		
-			 System.out.println("bienvenue " + nom + " .");
-			 
-			 
+			
+			
+			
+			System.out.println("entrez votre nom");
+			String nom = sc1.nextLine();
+
+			System.out.println("bienvenue " + nom + " .");
+
+			/*gamemaster.addPlayer(player1);
+			System.out.println(game);
+
+			while (player1.estDehors() != true) {
+				
+				
+				System.out.println(
+						"entrez z pour monter, q pour aller a gauche, s pour descendre et d pour aller a droite ");
+				
+				String direction = sc1.nextLine();
+
+				if (direction == "d") {
+					gamemaster.move(player1, Mouvement.haut);
+					System.out.println(game);
+				}
+				if (direction == "q") {
+					gamemaster.move(player1, Mouvement.gauche);
+					System.out.println(game);
+				}
+				if (direction == "s") {
+					gamemaster.move(player1, Mouvement.bas);
+					System.out.println(game);
+				}
+				if (direction == "d") {
+					gamemaster.move(player1, Mouvement.droite);
+					System.out.println(game);
+				}
+				
+				System.out.println(game);
+			}
+			 */
 			gamemaster.addPlayer(player1);
 			System.out.println(game);
 			
