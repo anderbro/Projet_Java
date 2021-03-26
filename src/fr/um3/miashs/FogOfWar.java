@@ -7,6 +7,24 @@ public class FogOfWar extends Joueur1 {
 	private int verticale;
 	private char [][] plateau;
 	
+	
+	
+	// Getter
+	
+	public int getHorizontale(){
+		return horizontale;
+	}
+	public int getVerticale(){
+		return verticale;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	//construction du plateau
 	public FogOfWar(int a, int b) {
 		horizontale = a;
@@ -84,7 +102,22 @@ public class FogOfWar extends Joueur1 {
 		}
 
 		
-		
+		public void Remplacer(Joueur1 J1, Tuile Tui, Plateau P, int posX, int posY) {
+			posX = getHorizontale();	//Position fog of war
+			posY = getVerticale();   // Position fog of war
+			J1.getX();		//  Position importante et de référence
+			J1.getY();		// Same
+			// 
+			
+			
+			
+			
+			// retourne position du plateau
+			Tui.getType();
+			
+			
+			return System.out.println("KDklz");
+		}
 		
 		// fonction remplacer fog of war avec la tuile adaptée
 		// Mise en place d'exceptions
