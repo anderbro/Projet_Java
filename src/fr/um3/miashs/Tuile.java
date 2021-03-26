@@ -1,15 +1,14 @@
 package fr.um3.miashs;
 
-public class Tuile {
+public class Tuile extends Coordonnees{
 
-	private int x = 0;
-	private int y = 0;
+
 	private TypeTuile type;
 
 	// constructeur de la tuile
 	public Tuile(char car, int x, int y) {
-		this.x = x;
-		this.y = y;
+		super (x,y);
+		
 
 		switch (car) {
 		case 'X':
@@ -46,6 +45,14 @@ public class Tuile {
 
 	public int getY() {
 		return y;
+	}
+	
+	public void setX(int x) {   //Ajout setter X et Y
+		this.x = x;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public TypeTuile getType() {

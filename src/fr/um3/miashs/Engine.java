@@ -20,9 +20,27 @@ public class Engine {
 		player.setY(vide.getY());
 		vide.setType(TypeTuile.Joueur);
 		joueurs.add(player);
-		
+		player.addCoordonnees(new Coordonnees (player.getX(),player.getY()) );
 	}
 
+	
+	 public void addPotion () {
+	  
+	  Tuile vide = plateau.getRandomEmptyTile(); 
+	  vide.setType(TypeTuile.Potion);
+	  
+	 }
+	 
+	 
+		
+	public void addVictoire () {
+		  
+		  Tuile vide = plateau.getRandomEmptyTile(); 
+		  vide.setType(TypeTuile.Sortie);
+		
+	}
+		
+	
 	///daqs
 	
 	public void move(Joueur j, Mouvement direction) {
@@ -66,6 +84,7 @@ public class Engine {
 			System.out.println("hors de la carte");
 			return;
 		}
+		j.addCoordonnees(res);
 		switch (res.getType()) {
 
 		case Joueur:
@@ -104,6 +123,7 @@ public class Engine {
 		j.setX(x);
 		j.setY(y);
 		res.setType(TypeTuile.Joueur);
+		
 	}
 
 	

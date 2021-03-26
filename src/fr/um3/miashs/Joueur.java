@@ -1,7 +1,6 @@
 package fr.um3.miashs;
 
-
-
+import java.util.ArrayList;
 
 public class Joueur extends Plateau {
 	
@@ -62,6 +61,7 @@ public class Joueur extends Plateau {
 	public void potion() {
 		if(hp<5) {
 			this.hp = hp+1;
+			System.out.println("vous avez desormais " +hp+ " point(s) de vie");
 			
 		}
 	}
@@ -76,12 +76,14 @@ public class Joueur extends Plateau {
 		
 		if (hp>0) {
 			this.hp= hp-1;
+			System.out.println("vous avez desormais " +hp+ " point(s) de vie");
 		}
 	}
 	
 	public void conflit() {
 		if (hp>0) {
 			this.hp-=1;
+			System.out.println("vous avez desormais " +hp+ " point(s) de vie");
 		}
 	}
 	
@@ -98,6 +100,18 @@ public class Joueur extends Plateau {
 			System.err.println("[setNom] error : " + nom);
 	}
 	
+	
+	private ArrayList<Coordonnees> historique  = new ArrayList<Coordonnees>();
+	
+	public void addCoordonnees(Coordonnees coord) {
+		this.historique.add(coord);
+		
+	}
+	
+	
+	public ArrayList<Coordonnees> getHistorique() {
+		return historique;
+	}
 	
 	/*public String toString () {
 		return getX()+" "+getY()+" "+getHp()+" "+getNom()+" "   ;

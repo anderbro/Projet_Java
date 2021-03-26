@@ -12,60 +12,74 @@ public class Main {
 			
 			Engine gamemaster =  new Engine(game);
 			Joueur player1 = new Joueur();
+			Joueur player2 = new Joueur();
 			Scanner sc1 =  new Scanner(System.in);
+			
+			
 			
 			///tant que saisi des joueurs 
 			
+
 			
 			
 			
 			System.out.println("entrez votre nom");
 			String nom = sc1.nextLine();
 
-			System.out.println("bienvenue " + nom + " .");
+			System.out.println("bienvenue " + nom + " vous avez actuellement 5 hp"+" .");
 
-			/*gamemaster.addPlayer(player1);
+			gamemaster.addPlayer(player1);
+			gamemaster.addPlayer(player2);
+			gamemaster.addPotion();
+			gamemaster.addVictoire();
 			System.out.println(game);
-
+			System.out.println(game.toString(player1.getHistorique()));
+			
+			
+			
+			
 			while (player1.estDehors() != true) {
 				
-				
+			
 				System.out.println(
-						"entrez z pour monter, q pour aller a gauche, s pour descendre et d pour aller a droite ");
+						"entrez haut pour monter, gauche pour aller a gauche, bas pour descendre et droite pour aller a droite ");
 				
 				String direction = sc1.nextLine();
-
-				if (direction == "d") {
+				
+				
+				if (direction.compareTo("haut") == 0) {
 					gamemaster.move(player1, Mouvement.haut);
-					System.out.println(game);
+					
+					System.out.println(game.toString(player1.getHistorique()));
+					//System.out.println(game);
+					
 				}
-				if (direction == "q") {
+				else if (direction.compareTo("gauche") == 0) {
 					gamemaster.move(player1, Mouvement.gauche);
-					System.out.println(game);
+					//System.out.println(game);
+					System.out.println(game.toString(player1.getHistorique()));
 				}
-				if (direction == "s") {
+				else if (direction.compareTo("bas") == 0) {
 					gamemaster.move(player1, Mouvement.bas);
-					System.out.println(game);
+					//System.out.println(game);
+					System.out.println(game.toString(player1.getHistorique()));
 				}
-				if (direction == "d") {
+				else if (direction.compareTo("droite") == 0)
 					gamemaster.move(player1, Mouvement.droite);
-					System.out.println(game);
+					//System.out.println(game);
+					System.out.println(game.toString(player1.getHistorique()));
 				}
 				
-				System.out.println(game);
-			}
-			 */
-			gamemaster.addPlayer(player1);
-			System.out.println(game);
-			
-			gamemaster.move(player1,Mouvement.haut);
-			System.out.println(game);
-			gamemaster.move(player1,Mouvement.haut);
-			System.out.println(game);
-			gamemaster.move(player1,Mouvement.haut);
-			System.out.println(game);
-			gamemaster.move(player1,Mouvement.haut);
-			System.out.println(game);
-		}
+				
+		}}	
+		
 
-	}
+			 
+
+		
+			 
+			
+			
+		
+
+	

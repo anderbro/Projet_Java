@@ -66,7 +66,6 @@ public class Plateau {
 		}
 
 		return grille[x][y];
-
 	}
 
 	public void entréeTouche(Joueur j1) {
@@ -100,6 +99,33 @@ public class Plateau {
 		return result;
 	}
 
+	
+	public String toString(ArrayList<Coordonnees> historique) {
+		boolean [][] chemin = new boolean[largeur][hauteur];
+		
+		for (Coordonnees coord : historique) {
+
+			chemin[coord.getX()][coord.getY()] = true;
+		}
+		
+		String result = "";
+		for (int y = 0; y < hauteur; y++) {
+			for (int x = 0; x < largeur; x++) {
+				if(chemin[x][y] ) {
+					result += grille[x][y].toChar();
+				}
+				else {
+					result += '?';
+				}
+				
+				
+			}
+			result += "\n";
+		}
+		return result;
+		
+	}
+	
 	public String toString() {
 		String result = "";
 		for (int y = 0; y < hauteur; y++) {
