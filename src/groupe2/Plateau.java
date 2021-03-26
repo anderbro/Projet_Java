@@ -49,6 +49,38 @@ public class Plateau {
 	}
 	
 	
+	public int getcoordonnéesJx(int l, int c) {
+		 for(int i = 0; i<horizontale; i++) {
+				for(int j = 0; j<verticale; j++) {
+					if(plateau[i][j] == 'J') {
+						int getx=0;
+						
+						
+						getx= i;
+						return getx;
+					}}}
+		return 0;}
+					
+						
+		
+	public int getcoordonnéesJy(int l, int c) {
+		 for(int i = 0; i<horizontale; i++) {
+				for(int j = 0; j<verticale; j++) {
+					if(plateau[i][j] == 'J') {
+						
+						int gety=0;
+						
+						gety= i;
+						return gety;
+					}}}
+		return 0;}
+				
+	
+	
+	
+	
+	
+	
 	 public void deplacerH () {
 		 
 		 char tmp;
@@ -56,7 +88,7 @@ public class Plateau {
 				for(int j = 0; j<verticale; j++) {
 					if(plateau[i][j] == 'J') {
 						
-						if(i-1 >= 0 && plateau[i-1][j]==' ') {
+						if(i-1 >= 0 && plateau[i-1][j]=='?') {
 							tmp=plateau[i][j];
 							plateau[i][j] = ' ';
 							plateau[i-1][j]= tmp ;
@@ -68,11 +100,7 @@ public class Plateau {
 			}
 		 
 	 }
-		/* if(plateau[][] = ' ' ) {
-			 plateau[][]=t;
-		 }
-		 
-		 */
+		
 		 
 	 
 	 public void deplacerG () {
@@ -80,7 +108,7 @@ public class Plateau {
 		 char tmp;
 		 for(int i = 0; i<horizontale; i++) {
 				for(int j = 0; j<verticale; j++) {
-					if(plateau[i][j] == 'J'&& plateau[i][j-1]==' ') {
+					if(plateau[i][j] == 'J'&& plateau[i][j-1]=='?') {
 						if(j-1 >= 0) {
 							tmp=plateau[i][j];
 							plateau[i][j] = ' ';
@@ -103,7 +131,7 @@ public class Plateau {
 				
 					if(plateau[i][j] == 'J') {
 						
-						if(j+1 <= verticale && plateau[i][j+1]==' ') {
+						if(j+1 <= verticale && plateau[i][j+1]=='?') {
 						
 							tmp=plateau[i][j];
 							plateau[i][j] = ' ';

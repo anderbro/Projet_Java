@@ -1,6 +1,6 @@
 package groupe2;
 
-public class Joueur {
+public class Joueur   {
 	
 	private int x;
 	private int y;
@@ -8,7 +8,7 @@ public class Joueur {
 	private String nom;
 	boolean isDead() { return this.hp <= 0; }
 	
-	public Joueur (int x, int y, int hp , String nom) {
+	public Joueur (int x, int y, int hp , String nom)  {
 		setX(x);
 		setY(y);
 		setHp(hp);
@@ -18,6 +18,7 @@ public class Joueur {
 	
 	
 	public int getX() {
+		
 		return x ;
 	}
 	
