@@ -22,7 +22,7 @@ public class FogOfWar extends Joueur1 {
 	
 	
 	
-	
+	//gjkrlues
 	
 	
 	//construction du plateau
