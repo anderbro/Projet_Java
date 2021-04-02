@@ -8,7 +8,7 @@ public class Main {
 		public static void main(String[] args) {
 			//permet de lire le fichier
 			Plateau game = new Plateau ()  ;
-			game.remplissageGrille("C:\\Users\\BATOU\\git\\groupe2\\src\\fr\\um3\\miashs\\resources\\carte1.txt");
+			game.remplissageGrille("src\\fr\\um3\\miashs\\resources\\carte1.txt");
 			//get.Class().getRessource(carte1.txt);
 			System.out.println(game);
 			

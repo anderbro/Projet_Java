@@ -6,7 +6,7 @@ public class Joueur extends Plateau {
 	
 	private int x;
 	private int y;
-	private int hp=5;
+	private int hp=3;
 	private String nom;
 	private boolean outside =  false;
 	private Mouvement mouvement;
