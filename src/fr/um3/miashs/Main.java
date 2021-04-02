@@ -6,8 +6,10 @@ public class Main {
 
 
 		public static void main(String[] args) {
+			//permet de lire le fichier
 			Plateau game = new Plateau ()  ;
 			game.remplissageGrille("C:\\Users\\BATOU\\git\\groupe2\\src\\fr\\um3\\miashs\\resources\\carte1.txt");
+			//get.Class().getRessource(carte1.txt);
 			System.out.println(game);
 			
 			Engine gamemaster =  new Engine(game);
@@ -29,7 +31,7 @@ public class Main {
 			System.out.println("bienvenue " + nom + " vous avez actuellement 5 hp"+" .");
 
 			gamemaster.addPlayer(player1);
-			gamemaster.addPlayer(player2);
+			
 			gamemaster.addPotion();
 			gamemaster.addVictoire();
 			System.out.println(game);
@@ -38,40 +40,57 @@ public class Main {
 			
 			
 			
+		
+			//tant que le joueur n'a pas gagner ca continue de tourner	
 			while (player1.estDehors() != true) {
 				
 			
 				System.out.println(
-						"entrez haut pour monter, gauche pour aller a gauche, bas pour descendre et droite pour aller a droite ");
+						"entrez z pour monter, q pour aller a gauche, s pour descendre et d pour aller a droite ");
 				
 				String direction = sc1.nextLine();
 				
 				
-				if (direction.compareTo("haut") == 0) {
+				if (direction.compareTo("z") == 0) {
 					gamemaster.move(player1, Mouvement.haut);
 					
 					System.out.println(game.toString(player1.getHistorique()));
 					//System.out.println(game);
 					
 				}
-				else if (direction.compareTo("gauche") == 0) {
+				else if (direction.compareTo("q") == 0) {
 					gamemaster.move(player1, Mouvement.gauche);
 					//System.out.println(game);
 					System.out.println(game.toString(player1.getHistorique()));
+					
 				}
-				else if (direction.compareTo("bas") == 0) {
+				else if (direction.compareTo("s") == 0) {
 					gamemaster.move(player1, Mouvement.bas);
 					//System.out.println(game);
+					
 					System.out.println(game.toString(player1.getHistorique()));
 				}
-				else if (direction.compareTo("droite") == 0)
+				else if (direction.compareTo("d") == 0) {
+					
 					gamemaster.move(player1, Mouvement.droite);
 					//System.out.println(game);
 					System.out.println(game.toString(player1.getHistorique()));
 				}
+				else {
+					System.out.println("entrez une vraie direction");
+				}
+			
+			}
+			
+			
 				
+			
 				
-		}}	
+			}
+				
+			
+		}	
+	
 		
 
 			 

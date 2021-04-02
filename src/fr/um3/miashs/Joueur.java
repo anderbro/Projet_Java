@@ -113,9 +113,7 @@ public class Joueur extends Plateau {
 		return historique;
 	}
 	
-	/*public String toString () {
-		return getX()+" "+getY()+" "+getHp()+" "+getNom()+" "   ;
-	}*/
+
 	
 	
 }

@@ -5,7 +5,7 @@ public class Tuile extends Coordonnees{
 
 	private TypeTuile type;
 
-	// constructeur de la tuile
+	// constructeur de la tuile avec son type et ses coordonnées
 	public Tuile(char car, int x, int y) {
 		super (x,y);
 		
@@ -64,6 +64,7 @@ public class Tuile extends Coordonnees{
 	}
 
 	public char toChar() {
+		//permet de retourner la case selon le type de la tuile
 		switch (this.type) {
 		case Joueur:
 			return 'X';

@@ -25,7 +25,7 @@ public class Engine {
 
 	
 	 public void addPotion () {
-	  
+		// positionnez aleatoirement la potion sur une case vide
 	  Tuile vide = plateau.getRandomEmptyTile(); 
 	  vide.setType(TypeTuile.Potion);
 	  
@@ -34,17 +34,17 @@ public class Engine {
 	 
 		
 	public void addVictoire () {
-		  
+		// positionnez aleatoirement la victoire sur une case vide
 		  Tuile vide = plateau.getRandomEmptyTile(); 
 		  vide.setType(TypeTuile.Sortie);
 		
 	}
 		
 	
-	///daqs
+	
 	
 	public void move(Joueur j, Mouvement direction) {
-
+		///permet les mouvements du joueur
 		int x = 0;
 		int y = 0;
 
@@ -79,14 +79,15 @@ public class Engine {
 		}
 
 		Tuile res = plateau.getTuile(x, y);
-
+		//test si il est toujours sur la carte
 		if (res == null) {
 			System.out.println("hors de la carte");
 			return;
 		}
 		j.addCoordonnees(res);
+		//detecte la case sur laquelle le joueur se déplace et fait l'interaction correspondante
 		switch (res.getType()) {
-
+		
 		case Joueur:
 			System.out.println("tu perds un point de vie parce que y a un joueur");
 			j.conflit();
@@ -118,6 +119,7 @@ public class Engine {
 
 			break;
 		}
+		//on met une tuile vide sur l'ancienne
 		Tuile ancienneTuile = plateau.getTuile(j.getX(), j.getY());
 		ancienneTuile.setType(TypeTuile.Vide);
 		j.setX(x);

@@ -17,7 +17,7 @@ public class Plateau {
 	private Tuile[][] grille;
 	private int largeur, hauteur;
 
-	// rempli la grille à partie d'un fichier
+	// rempli la grille à partie d'un fichier en passant par une arraylist (facilite par rapport a la taille de la map si elle change)
 
 	public void remplissageGrille(String cheminCarte) {
 		ArrayList<Tuile> temp = new ArrayList<Tuile>();
@@ -60,7 +60,7 @@ public class Plateau {
 	}
 
 	public Tuile getTuile(int x, int y) {
-
+		//permet de récuperer une tuile aux coordonnés x et y
 		if (x >= largeur || x < 0 || y >= hauteur || y < 0) {
 			return null;
 		}
@@ -68,27 +68,10 @@ public class Plateau {
 		return grille[x][y];
 	}
 
-	public void entréeTouche(Joueur j1) {
-		System.out.println("quelle direction ? (haut/bas/gauche/droite");
-		Scanner txt = new Scanner(System.in);
 
-		if (txt.equals("z")) {
-			System.out.println("haut");
-		}
-
-		else if (txt.equals("q")) {
-			System.out.println("gauche");
-		}
-
-		else if (txt.equals("d")) {
-			System.out.println("droite");
-		} else if (txt.equals("s")) {
-			System.out.println("bas");
-		}
-
-	}
 
 	public Tuile getRandomEmptyTile() {
+		//permet de retourner une tuile aléatoire et vide
 		Tuile result;
 
 		do {
@@ -101,6 +84,7 @@ public class Plateau {
 
 	
 	public String toString(ArrayList<Coordonnees> historique) {
+		//permet d'avoir le brouillard de guerre/historique
 		boolean [][] chemin = new boolean[largeur][hauteur];
 		
 		for (Coordonnees coord : historique) {
@@ -127,6 +111,7 @@ public class Plateau {
 	}
 	
 	public String toString() {
+		//affichage du plateau
 		String result = "";
 		for (int y = 0; y < hauteur; y++) {
 			for (int x = 0; x < largeur; x++) {
