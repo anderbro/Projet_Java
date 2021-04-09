@@ -1,4 +1,4 @@
-package groupe2;
+package Brouillon;
 
 public class testPlateau {
 

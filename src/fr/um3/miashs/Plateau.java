@@ -1,23 +1,19 @@
 package fr.um3.miashs;
 
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.Random;
-//import com.sun.tools.jdeprscan.scan.Scan;
 
 public class Plateau {
 
 	private Tuile[][] grille;
 	private int largeur, hauteur;
 
-	// rempli la grille à partie d'un fichier en passant par une arraylist (facilite par rapport a la taille de la map si elle change)
+	// rempli la grille a  partie d'un fichier en passant par une arraylist (facilite
+	// par rapport a la taille de la map si elle change)
 
 	public void remplissageGrille(String cheminCarte) {
 		ArrayList<Tuile> temp = new ArrayList<Tuile>();
@@ -49,6 +45,13 @@ public class Plateau {
 			hauteur = numeroLigne;
 		} catch (IOException e) {
 			System.out.println("Erreur de fichier");
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		grille = new Tuile[largeur][hauteur];
@@ -60,7 +63,7 @@ public class Plateau {
 	}
 
 	public Tuile getTuile(int x, int y) {
-		//permet de récuperer une tuile aux coordonnés x et y
+		// permet de rï¿½cuperer une tuile aux coordonnï¿½s x et y
 		if (x >= largeur || x < 0 || y >= hauteur || y < 0) {
 			return null;
 		}
@@ -68,10 +71,8 @@ public class Plateau {
 		return grille[x][y];
 	}
 
-
-
 	public Tuile getRandomEmptyTile() {
-		//permet de retourner une tuile aléatoire et vide
+		// permet de retourner une tuile alï¿½atoire et vide
 		Tuile result;
 
 		do {
@@ -82,36 +83,33 @@ public class Plateau {
 		return result;
 	}
 
-	
 	public String toString(ArrayList<Coordonnees> historique) {
-		//permet d'avoir le brouillard de guerre/historique
-		boolean [][] chemin = new boolean[largeur][hauteur];
-		
+		// permet d'avoir le brouillard de guerre/historique
+		boolean[][] chemin = new boolean[largeur][hauteur];
+
 		for (Coordonnees coord : historique) {
 
 			chemin[coord.getX()][coord.getY()] = true;
 		}
-		
+
 		String result = "";
 		for (int y = 0; y < hauteur; y++) {
 			for (int x = 0; x < largeur; x++) {
-				if(chemin[x][y] ) {
+				if (chemin[x][y]) {
 					result += grille[x][y].toChar();
-				}
-				else {
+				} else {
 					result += '?';
 				}
-				
-				
+
 			}
 			result += "\n";
 		}
 		return result;
-		
+
 	}
-	
+
 	public String toString() {
-		//affichage du plateau
+		// affichage du plateau
 		String result = "";
 		for (int y = 0; y < hauteur; y++) {
 			for (int x = 0; x < largeur; x++) {
