@@ -1,8 +1,12 @@
-package fr.um3.miashs;
+package Brouillon;
 
 import java.util.*;
 
-public class Main {
+import fr.um3.miashs.Engine;
+import fr.um3.miashs.Mouvement;
+import fr.um3.miashs.Plateau;
+
+public class BrouillonMain {
 
 	public static void main(String[] args) {
 		// permet de lire le fichier
