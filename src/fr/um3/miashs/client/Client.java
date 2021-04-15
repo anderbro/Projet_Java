@@ -2,13 +2,11 @@ package fr.um3.miashs.client;
 
 import java.net.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 import java.io.*;
 
 public class Client {
@@ -32,7 +30,7 @@ public class Client {
 			System.out.println("Entrez votre nom");
 			String nom = scanner.nextLine();
 
-			// Envoi de la réponse au serveur
+			// Envoi de la rï¿½ponse au serveur
 			userInput.sendToServer(nom);
 
 		} catch (UnknownHostException e) {
@@ -65,7 +63,14 @@ public class Client {
 
 		// invokeAll() returns when all tasks are complete
 		try {
-			taskExecutor.invokeAll(tasks);
+			try {
+				taskExecutor.invokeAny(tasks);
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
 		} catch (InterruptedException e) {
 			System.out.println("An error occured in one of the threads");
 		}

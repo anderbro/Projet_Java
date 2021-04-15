@@ -130,6 +130,16 @@ public class Joueur {
 		return historique;
 	}
 
+	public void disconnect()  {
+		try {
+			this.message("exit");
+			this.connexion.close();
+		}
+		catch(Exception ex) {
+			System.out.println(this.nom + " est d�connect�");
+		}
+	}
+
 	public boolean isConnected() {
 		try {
 			PrintWriter out = new PrintWriter(this.connexion.getOutputStream(), true);

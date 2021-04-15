@@ -22,8 +22,14 @@ public class ServerInput implements Callable<Void> {
             try {
                 String input = serverReader.readLine();
 
-                if (!input.equals("ping"))
+
+                if (input.equals("exit") ){
+                    this.socket.close();  
+                    return null;
+                }
+                if (!input.equals("ping") )
                     System.out.println(input);
+                
             } catch (IOException e) {
                 System.err.println("Erreur de connexion.");
                 return null;

@@ -1,39 +1,114 @@
 package fr.um3.miashs;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
 
-public class Serveur {
-	ServerSocket socketServeur;
-	private Engine gamemaster;
-	private ConnexionJoueur gestionnaireConnexion;
-	private Jeu game;
+public class Serveur implements Runnable {
+	private ServerSocket socketServeur;
+	private ArrayList<Engine> gamemasters = new ArrayList<Engine>();
+	private ArrayList<Thread> games = new ArrayList<Thread>();
+	private Plateau plateau = new Plateau();
 
 	public Serveur(int port) throws IOException {
+		plateau.remplissageGrille("src\\fr\\um3\\miashs\\resources\\carte1.txt");
+
 		this.socketServeur = new ServerSocket(port);
-		this.nouvellePartie();
-		this.gestionnaireConnexion = new ConnexionJoueur(socketServeur, gamemaster);
 	}
 
-	private void nouvellePartie() {
-		Plateau game = new Plateau();
-		game.remplissageGrille("src\\fr\\um3\\miashs\\resources\\carte1.txt");
-		this.gamemaster = new Engine(game);
-		this.gamemaster.addPotion();
-		this.gamemaster.addPotion();
-		this.gamemaster.addVictoire();
-		this.game = new Jeu(this.gamemaster);
+	private Engine nouvellePartie() {
+		Engine engine = new Engine(plateau);
+
+		engine.addPotion();
+		engine.addPotion();
+		engine.addPotion();
+		engine.addVictoire();
+
+		this.gamemasters.add(engine);
+
+		return engine;
 	}
 
-	public void start() {
-		Thread thread1 = new Thread(this.gestionnaireConnexion);
-		Thread thread2 = new Thread(this.game);
-		thread1.start();
-		thread2.start();
+	public void startPartie(Engine engine) {
+		Thread thread = new Thread(engine);
+
+		this.games.add(thread);
+		thread.start();
+	}
+
+	public void addPlayer(Joueur joueur) {
+		/// TODO : gérer l'ajout d'un player
+		boolean hasJoined = false;
+
+		for (Engine engine : this.gamemasters) {
+			if (engine.howManyPlayers() < 4 && !engine.partieFinie()) {
+				engine.addPlayer(joueur);
+				hasJoined = true;
+
+				synchronized (engine.running) {
+					engine.running.notifyAll();
+					// deverouille le wait dans engine
+				}
+			}
+		}
+
+		if (hasJoined)
+			return;
+
+		Engine partie = this.nouvellePartie();
+		partie.addPlayer(joueur);
+		this.startPartie(partie);
+	}
+
+	@Override
+	public void run() {
+		try {
+
+			System.out.println("Lancement du serveur");
+			// 5sec avant timeout du serveur s'il y a personne dessus
+			// socketServeur.setSoTimeout(5000);
+			// définir une boucle sans fin
+			while (true) {
+				// méthode accept() qui renvoie une socket lors d'une nouvelle connexion
+				Socket socketClient = this.socketServeur.accept();
+				// obtenir un flux en entrée et en sortie à partir de la socket
+
+				this.bienvenue(socketClient);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void bienvenue(Socket socket) {
+		try {
+			System.out.println("Connexion avec le client : " + socket.getInetAddress());
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			PrintStream out = new PrintStream(socket.getOutputStream());
+
+			String name;
+			name = in.readLine();
+			out.println("Bonjour ! " + name + " !");
+
+			Joueur player = new Joueur(name, socket);
+
+			this.addPlayer(player);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
 		Serveur serveur = new Serveur(1664);
-		serveur.start();
+		// serveur.start();
+
+		Thread serverThread = new Thread(serveur);
+		serverThread.start();
 	}
 }
