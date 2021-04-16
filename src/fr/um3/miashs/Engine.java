@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.regex.Pattern;
 
 public class Engine implements Runnable {
+	// runnable, callable = sous partie de thread, ca reviens au meme que d'extend thread juste plus opti
 
 	private ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 	private Plateau plateau;
@@ -27,9 +28,9 @@ public class Engine implements Runnable {
 					this.tourPlateau();
 				else {
 					synchronized (this.running) {
-						// permet de marcher ca tourne pas en rond lol + synchronized pour un accï¿½s
+						// permet de marcher ca tourne pas en rond lol + synchronized pour un accés
 						// exclusif sur le lock
-						// pour synchro deux thread accedant aux memes donnï¿½es
+						// pour synchro deux thread accedant aux memes données
 						this.running.wait();
 					}
 				}
@@ -55,6 +56,7 @@ public class Engine implements Runnable {
 	}
 
 	private void removePlayer(Joueur player) {
+		//permet d'enlever le joueur mort du jeu
 		if (!player.estDehors() && !player.isDead())
 			this.plateau.getTuile(player.getX(), player.getY()).setType(TypeTuile.Vide);
 
@@ -62,7 +64,7 @@ public class Engine implements Runnable {
 	}
 
 	private void removePlayers(Collection<Joueur> playersToDelete) {
-		// Supprime le joueur
+		// Supprime les joueurs, une liste de joueur
 		synchronized (lock) {
 			for (Joueur player : playersToDelete) {
 				this.removePlayer(player);
@@ -73,6 +75,7 @@ public class Engine implements Runnable {
 	}
 
 	public int howManyPlayers() {
+		//compte le nombre de joueurs dans la partie
 		return this.joueurs.size();
 	}
 
@@ -101,7 +104,7 @@ public class Engine implements Runnable {
 			j.message("C'est a votre tour");
 			String reponse;
 			do {
-				j.message("Veuillez saisir 4 dï¿½placements valides, parmis z q s d ");
+				j.message("Veuillez saisir 4 déplacements valides, parmis z q s d ");
 				reponse = j.ecoute();
 			} while (reponse != null && !Pattern.matches("[zqsd]{4}", reponse)); // Le matches trop bien ici pour les
 																					// deux conditions en meme temps
@@ -124,7 +127,7 @@ public class Engine implements Runnable {
 				}
 			}
 
-			// On envoie ï¿½ l'utilisateur le plateau ï¿½ afficher
+			// On envoie à l'utilisateur le plateau à afficher
 			j.message(this.plateau.toString(j.getHistorique()));
 
 			String listeJoueurs = "Liste des joueurs : ";
@@ -219,7 +222,7 @@ public class Engine implements Runnable {
 			return;
 		}
 		j.addCoordonnees(res);
-		// detecte la case sur laquelle le joueur se dï¿½place et fait l'interaction
+		// detecte la case sur laquelle le joueur se déplace et fait l'interaction
 		// correspondante
 		switch (res.getType()) {
 		case Joueur:
@@ -249,6 +252,7 @@ public class Engine implements Runnable {
 		}
 		
 		if(j.isDead()) {
+			//regarde si le joueur est mort, puis le fait mourir dans l'interraction client serveur
 			j.message("t'es mort");
 			this.removePlayer(j);
 			j.disconnect();

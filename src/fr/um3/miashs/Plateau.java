@@ -13,9 +13,10 @@ public class Plateau {
 	private int largeur, hauteur;
 
 	// rempli la grille a  partie d'un fichier en passant par une arraylist (facilite
-	// par rapport a la taille de la map si elle change)
+	// par rapport a la taille de la map si elle change) avant de le mettre dans un tableau
 
 	public void remplissageGrille(String cheminCarte) {
+	
 		ArrayList<Tuile> temp = new ArrayList<Tuile>();
 		BufferedReader reader;
 		try {
@@ -63,7 +64,7 @@ public class Plateau {
 	}
 
 	public Tuile getTuile(int x, int y) {
-		// permet de rï¿½cuperer une tuile aux coordonnï¿½s x et y
+		// permet de récuperer une tuile aux coordonnés x et y
 		if (x >= largeur || x < 0 || y >= hauteur || y < 0) {
 			return null;
 		}
@@ -72,7 +73,7 @@ public class Plateau {
 	}
 
 	public Tuile getRandomEmptyTile() {
-		// permet de retourner une tuile alï¿½atoire et vide
+		// permet de retourner une tuile aléatoire et vide
 		Tuile result;
 
 		do {
@@ -84,7 +85,8 @@ public class Plateau {
 	}
 
 	public String toString(ArrayList<Coordonnees> historique) {
-		// permet d'avoir le brouillard de guerre/historique
+		// permet d'avoir le brouillard de guerre/historique. 
+		// met de coté chaque mouvement réalisé 
 		boolean[][] chemin = new boolean[largeur][hauteur];
 
 		for (Coordonnees coord : historique) {

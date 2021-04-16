@@ -1,6 +1,7 @@
 package fr.um3.miashs;
 
 public class Coordonnees {
+	//class comprenant les coordonées, facilite les choses pour l'historique
 	protected int x = 0;
 	protected int y = 0;
 

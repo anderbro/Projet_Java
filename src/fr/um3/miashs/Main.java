@@ -3,6 +3,7 @@ package fr.um3.miashs;
 import java.util.*;
 
 public class Main {
+	//ancien main maintenant inutile
 
 	public static void main(String[] args) {
 		// permet de lire le fichier

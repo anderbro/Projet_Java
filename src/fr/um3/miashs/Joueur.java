@@ -15,19 +15,24 @@ public class Joueur {
 	private int hp = 3;
 	private String nom;
 	private boolean outside = false;
-
+	private Socket connexion;
+	private final Object lock = new Object();
+	private ArrayList<Coordonnees> historique = new ArrayList<Coordonnees>();
+	
 	public boolean isDead() {
+		//boolean qui gere la mort
 		return this.hp <= 0;
 	}
 
 	public boolean estDehors() {
+		//boolean qui gere si il est dehors ou non
 		return this.outside;
 	}
 
-	private Socket connexion;
-	private final Object lock = new Object();
+
 
 	public void message(String msg) {
+		//permet d'envoyer un message au client (qui est un joueur)
 		synchronized (lock) {
 			PrintStream out;
 			try {
@@ -40,6 +45,7 @@ public class Joueur {
 	}
 
 	public String ecoute() throws IOException {
+		//permet "l'écoute" du client
 		synchronized (lock) {
 			BufferedReader in = new BufferedReader(new InputStreamReader(this.connexion.getInputStream()));
 
@@ -49,11 +55,13 @@ public class Joueur {
 	}
 
 	public Joueur(String nom, Socket connexion) {
+		//constructeur
 		this.connexion = connexion;
 		this.nom = nom;
 	}
 
 	public Socket getConnexion() {
+		//permet d'avoir la connexion
 		return connexion;
 	}
 
@@ -82,6 +90,7 @@ public class Joueur {
 	}
 
 	public void potion() {
+		//gestion de la potion sur les hps
 		if (hp < 5) {
 			this.hp = hp + 1;
 			this.message("vous avez desormais " + hp + " point(s) de vie");
@@ -94,6 +103,7 @@ public class Joueur {
 	}
 
 	public void piege() {
+		//gestion du piege sur les hps
 
 		if (hp > 0) {
 			this.hp = hp - 1;
@@ -102,6 +112,7 @@ public class Joueur {
 	}
 
 	public void conflit() {
+		//gestion du conflit entre deux joueurs sur les hps
 		if (hp > 0) {
 			this.hp -= 1;
 			this.message("vous avez desormais " + hp + " point(s) de vie");
@@ -119,9 +130,10 @@ public class Joueur {
 			System.err.println("[setNom] error : " + nom);
 	}
 
-	private ArrayList<Coordonnees> historique = new ArrayList<Coordonnees>();
+	
 
 	public void addCoordonnees(Coordonnees coord) {
+		//historique du joueur, ce que le joueur verra a la fin
 		this.historique.add(coord);
 
 	}
@@ -131,16 +143,18 @@ public class Joueur {
 	}
 
 	public void disconnect()  {
+		//méthode pour déconnecter ce joueur
 		try {
 			this.message("exit");
 			this.connexion.close();
 		}
 		catch(Exception ex) {
-			System.out.println(this.nom + " est dï¿½connectï¿½");
+			System.out.println(this.nom + " est déconnecté");
 		}
 	}
 
 	public boolean isConnected() {
+		//boolean pour savoir si le joueur est connecté ou pas
 		try {
 			PrintWriter out = new PrintWriter(this.connexion.getOutputStream(), true);
 			out.println("ping");

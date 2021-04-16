@@ -8,6 +8,7 @@ import java.util.concurrent.Callable;
 
 public class ServerInput implements Callable<Void> {
 
+	//callable, sous partie de thread
     private BufferedReader serverReader;
     private Socket socket;
 

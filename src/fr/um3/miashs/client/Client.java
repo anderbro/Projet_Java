@@ -30,7 +30,7 @@ public class Client {
 			System.out.println("Entrez votre nom");
 			String nom = scanner.nextLine();
 
-			// Envoi de la rï¿½ponse au serveur
+			// Envoi de la réponse au serveur
 			userInput.sendToServer(nom);
 
 		} catch (UnknownHostException e) {
@@ -43,6 +43,7 @@ public class Client {
 	}
 
 	private void cleanup() {
+		//"nettoyage", si le socket n'est pas null ou n'est pas fermé
 		System.out.println("Cleaning up resources.");
 		try {
 			if (socket != null && !socket.isClosed())
@@ -55,6 +56,7 @@ public class Client {
 	}
 
 	public void run() {
+		//lance les threads
 		ExecutorService taskExecutor = Executors.newFixedThreadPool(2);
 		ArrayList<Callable<Void>> tasks = new ArrayList<Callable<Void>>();
 
@@ -72,7 +74,7 @@ public class Client {
 
 
 		} catch (InterruptedException e) {
-			System.out.println("An error occured in one of the threads");
+			System.out.println("Une erreur est apparue dans l'un des threads");
 		}
 	}
 
