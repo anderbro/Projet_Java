@@ -1,9 +1,12 @@
-package fr.um3.miashs;
+package Brouillon;
 
 import java.util.*;
 
-public class Main {
-	//ancien main maintenant inutile
+import fr.um3.miashs.Engine;
+import fr.um3.miashs.Mouvement;
+import fr.um3.miashs.Plateau;
+
+public class BrouillonMain {
 
 	public static void main(String[] args) {
 		// permet de lire le fichier
@@ -26,16 +29,16 @@ public class Main {
 
 		System.out.println("bienvenue " + nom + " vous avez actuellement 5 hp" + " .");
 
-		//gamemaster.addPlayer(player1);
+		gamemaster.addPlayer(player1);
 
 		
 		System.out.println(game);
-		///System.out.println(game.toString(player1.getHistorique()));
+		System.out.println(game.toString(player1.getHistorique()));
 
 		
 		int i =0 ;
 		
-		/*
+		
 		
 		// tant que le joueur n'a pas gagné ca continue de tourner
 		while (player1.estDehors() != true ) {
@@ -83,10 +86,10 @@ public class Main {
 		}
 
 	}
-*/
-}
 
 }
+
+		
 			 
 			
 			
