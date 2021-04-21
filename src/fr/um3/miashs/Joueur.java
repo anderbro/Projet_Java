@@ -127,18 +127,19 @@ public class Joueur {
 		if (nom != null && nom.length() > 1)
 			this.nom = nom;
 		else
-			System.err.println("[setNom] error : " + nom);
+			System.err.println("[setNom] erreur : " + nom);
 	}
 
 	
 
 	public void addCoordonnees(Coordonnees coord) {
-		//historique du joueur, ce que le joueur verra a la fin
+
 		this.historique.add(coord);
 
 	}
 
 	public ArrayList<Coordonnees> getHistorique() {
+		//historique du joueur, ce que le joueur verra a la fin
 		return historique;
 	}
 
