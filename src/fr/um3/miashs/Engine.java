@@ -160,7 +160,7 @@ public class Engine implements Runnable {
 
 			if (!p.isConnected()) {
 				toDelete.add(p);
-				System.out.println("Joueur " + p.getNom() + " dï¿½connectï¿½.");
+				System.out.println("Joueur " + p.getNom() + " déconnecté.");
 			}
 		}
 

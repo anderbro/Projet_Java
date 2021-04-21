@@ -81,7 +81,7 @@ public class Serveur implements Runnable {
 			// socketServeur.setSoTimeout(5000);
 			// définir une boucle sans fin
 			while (true) {
-				// mÃ©thode accept() qui renvoie une socket lors d'une nouvelle connexion
+				// méthode accept() qui renvoie une socket lors d'une nouvelle connexion
 				Socket socketClient = this.socketServeur.accept();
 				// obtenir un flux en entrée et en sortie à  partir de la socket
 
