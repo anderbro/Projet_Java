@@ -32,6 +32,7 @@ public class Serveur implements Runnable {
 		engine.addVictoire();
 
 		this.gamemasters.add(engine);
+		//fd
 
 		return engine;
 	}
